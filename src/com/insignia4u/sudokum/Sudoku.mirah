@@ -7,6 +7,10 @@ import android.content.Intent
 import android.view.View
 import android.view.View.OnClickListener
 
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+
 class Sudoku < Activity
 
   def onCreate(state)
@@ -29,6 +33,20 @@ class Sudoku < Activity
 
     exitButton = findViewById(R.id.exit_button)
     exitButton.setOnClickListener{|v| nil }
+  end
+
+  def onCreateOptionsMenu(m):boolean
+    super m
+    getMenuInflater.inflate R.menu.menu, m
+    true
+  end
+
+  def onOptionsItemSelected(menu_item)
+    if menu_item.getItemId == R.id.settings  
+      startActivity Intent.new(self, Class.forName('com.insignia4u.sudokum.Prefs'))
+      return true
+    end
+    false
   end
 
 end
