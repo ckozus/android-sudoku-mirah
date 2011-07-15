@@ -39,7 +39,9 @@ class Sudoku < Activity
     end
 
     exitButton = findViewById(R.id.exit_button)
-    exitButton.setOnClickListener{|v| nil }
+    exitButton.setOnClickListener do |v|
+      this.finish
+    end
   end
 
   def onCreateOptionsMenu(m):boolean
